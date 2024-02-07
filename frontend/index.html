@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script type="module" src="index.js"></script>
+  <title>Lunch creator panel</title>
+</head>
+<body>
+  <header class="app-header" id="app-header">
+    <h1 class="app-header__app-name">Lunch creator panel</h1>
+    <div class="app-header__user-and-controls">
+      <div class="user-info">
+        <div class="user-info__avatar"></div>
+        <span class="user-info__username">
+          Admin
+        </span>
+      </div>
+      <label class="toggle-switch" id="theme-switch">
+        <input type="checkbox" class="toggle-switch__checkbox" />
+        <div class="toggle-switch__slider"></div>
+      </label>
+    </div>
+  </header>
+  <main class="app-main" id="app-main">
+    <ul class="menus-list">
+      <li class="menus-list__item menu-adder">
+        <button type="button" class="menu-adder__btn" id="menu-adder__btn">
+          &#10010; Добавить ланч меню
+        </button>
+        <!-- <input
+          type="text"
+          placeholder="Новый список"
+          class="menu-adder__input"
+        /> -->
+      </li>
+    </ul>
+    <div class="dishes-change">
+      <h2 class="change-dishes-list-panel">Изменение общего списка блюд</h2>
+      <ul class="buttom-list">
+        <button type="button" class="dishes-change__btn append-btn" id="append-btn">Добавить</button>
+        <button type="button" class="dishes-change__btn change-btn" id="change-btn">Изменить</button>
+        <button type="button" class="dishes-change__btn delete-btn" id="delete-btn">Удалить</button>
+      </ul>
+      
+    </div>
+  </main>
+  
+  <dialog class="app-modal" id="modal-add-dish">
+    <form class="app-modal__form">
+      <label for="modal-add-dish-input" class="app-modal__question" id="label_add_element_to_menu">
+        Выберите блюдо:
+      </label>
+      <!-- <input type="text" name="" id="modal-add-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-modal" id="modal-add-dish-to-base">
+    <form class="app-modal__form">
+      <label for="modal-add-dish-input" class="app-modal__question" id="label_add_element">
+        Задайте параметры:
+      </label>
+      <input type="text" name="" id="modal-add-dish-to-base-input" class="app-modal__input">
+      <div class="app-modal__controls" id="buttoms_module_add">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-modal" id="modal-edit-dish">
+    <form class="app-modal__form">
+      <label for="modal-edit-dish-input" class="app-modal__question">
+        Измените блюдо:
+      </label>
+      <input type="text" name="" id="modal-edit-dish-input" class="app-modal__input">
+      <div class="app-modal__controls" id="buttoms_module_edit">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-modal" id="modal-delete-dish">
+    <form class="app-modal__form">
+      <label class="app-modal__question">
+      </label>
+      <!-- <input type="text" name="" id="modal-delete-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-modal" id="modal-delete-dish-from-base">
+    <form class="app-modal__form">
+      <label class="app-modal__question">
+      </label>
+      <!-- <input type="text" name="" id="modal-delete-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls" id="buttoms_module_delete_from_base">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-notifications" id="app-notifications">
+  </dialog>
+  
+  <dialog class="app-modal" id="modal-delete-menu">
+    <form class="app-modal__form">
+      <label class="app-modal__question">
+      </label>
+      <!-- <input type="text" name="" id="modal-delete-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls" id="buttoms_module_delete_menu">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-notifications" id="app-notifications">
+  </dialog>
+
+  <dialog class="app-modal" id="modal-edit-menu">
+    <form class="app-modal__form">
+      <label class="app-modal__question">
+      </label>
+      <input type="number" id="number-input-edit-menu" class="app-modal__input"/>
+      <select id="week_select_edit" class="app-modal-weekday__select">
+        <option value="Пн">Понедельник</option>
+        <option value="Вт">Вторник</option>
+        <option value="Ср">Среда</option>
+        <option value="Чт">Четверг</option>
+        <option value="Пт">Пятница</option>
+        <option value="Сб">Суббота</option>
+        <option value="Вс">Воскресенье</option>
+      </select>
+      <!-- <input type="text" name="" id="modal-delete-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls" id="buttoms_module_edit_menu">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-notifications" id="app-notifications">
+  </dialog>
+
+  <dialog class="app-modal" id="modal-add-menu">
+    <form class="app-modal__form">
+      <label class="app-modal__question">
+      </label>
+      <input type="number" id="number-input-add-menu" class="app-modal__input"/>
+      <select id="week_select_add" class="app-modal-weekday__select">
+        <option value="Пн">Понедельник</option>
+        <option value="Вт">Вторник</option>
+        <option value="Ср">Среда</option>
+        <option value="Чт">Четверг</option>
+        <option value="Пт">Пятница</option>
+        <option value="Сб">Суббота</option>
+        <option value="Вс">Воскресенье</option>
+      </select>
+      <!-- <select id="variant_select" class="app-modal-variant__select">
+        
+      </select> -->
+      <!-- <input type="text" name="" id="modal-delete-dish-input" class="app-modal__input"> -->
+      <div class="app-modal__controls" id="buttoms_module_add_menu">
+        <button type="button" class="app-modal__btn modal-ok-btn">OK</button>
+        <button type="button" class="app-modal__btn modal-cancel-btn">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="app-notifications" id="app-notifications">
+  </dialog>
+
+</body>
+</html>
